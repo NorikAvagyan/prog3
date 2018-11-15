@@ -3,6 +3,7 @@ class vorsord extends MayrBasa{
     constructor(x,y,index){
         super(x,y);
         this.index = 4;
+        this.energy = 5;
    }
     
 
@@ -34,7 +35,7 @@ class vorsord extends MayrBasa{
 
     utel() {
         this.stanalNorKordinatner();
-        var norVandak = random(this.yntrelVandak(1));
+        var norVandak = random(this.yntrelVandak(3));
         if (norVandak) {
             matrix[this.y][this.x] = 0;
             this.x = norVandak[0];
@@ -44,7 +45,7 @@ class vorsord extends MayrBasa{
             this.bazmanal();
             for (var i in gishatichArr) {
                 if (gishatichArr[i].x == this.x && gishatichArr[i].y == this.y) {
-                    gishatichArr.splice(i, 3);
+                    gishatichArr.splice(i, 1);
                     break;
                 }
 
@@ -52,7 +53,7 @@ class vorsord extends MayrBasa{
 
             for (var i in xotakerArr) {
                 if (xotakerArr[i].x == this.x && xotakerArr[i].y == this.y) {
-                    xotakerArr.splice(i, 2);
+                    xotakerArr.splice(i, 1);
                     break;
                 }
 

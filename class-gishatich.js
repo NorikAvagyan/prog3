@@ -2,6 +2,7 @@ class gishatich extends MayrBasa{
     constructor(x,y,index){
         super(x,y);
         this.index = 3;
+        this.energy = 5
    }
 
     
@@ -35,7 +36,7 @@ class gishatich extends MayrBasa{
 
     utel() {
         this.stanalNorKordinatner();
-        var norVandak = random(this.yntrelVandak(1));
+        var norVandak = random(this.yntrelVandak(2));
         if (norVandak) {
             matrix[this.y][this.x] = 0;
             this.x = norVandak[0];
@@ -45,7 +46,7 @@ class gishatich extends MayrBasa{
             this.bazmanal();
             for (var i in xotakerArr) {
                 if (xotakerArr[i].x == this.x && xotakerArr[i].y == this.y) {
-                    xotakerArr.splice(i, 2);
+                    xotakerArr.splice(i, 1);
                     break;
                 }
 
@@ -65,10 +66,10 @@ class gishatich extends MayrBasa{
         }
     }
     mahanal() {
-        if (this.energy == 0) {
+        if (this.energy <= 0) {
             for (var i in gishatichArr) {
                 if (this.x == gishatichArr[i].x && this.y == gishatichArr[i].y) {
-                    gishatichArr.splice(i, 2);
+                    gishatichArr.splice(i, 1);
                     matrix[this.y][this.x] = 0;
 
                 }

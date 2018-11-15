@@ -13,6 +13,7 @@ class MayrBasa {
             [this.x, this.y + 1],
             [this.x + 1, this.y + 1]
         ];
+        this.energy = 0;
     }
     yntrelVandak(ch) {
         var found = [];

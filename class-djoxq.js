@@ -32,7 +32,7 @@ class Djoxq extends MayrBasa{
 
     utel() {
         this.stanalNorKordinatner();
-        var norVandak = random(this.yntrelVandak(1));
+        var norVandak = random(this.yntrelVandak(4));
         if (norVandak) {
             matrix[this.y][this.x] = 0;
             this.x = norVandak[0];
@@ -41,21 +41,21 @@ class Djoxq extends MayrBasa{
             this.energy++;
             for (var i in gishatichArr) {
                 if (gishatichArr[i].x == this.x && gishatichArr[i].y == this.y) {
-                    gishatichArr.splice(i, 3);
+                    gishatichArr.splice(i, 1);
                     break;
                 }
 
             }
             for (var i in xotakerArr) {
                 if (xotakerArr[i].x == this.x && xotakerArr[i].y == this.y) {
-                    xotakerArr.splice(i, 2);
+                    xotakerArr.splice(i, 1);
                     break;
                 }
 
             }
             for (var i in vorsordArr) {
                 if (vorsordArr[i].x == this.x && vorsordArr[i].y == this.y) {
-                    vorsordArr.splice(i, 4);
+                    vorsordArr.splice(i, 1);
                     break;
                 }
             }
@@ -64,4 +64,4 @@ class Djoxq extends MayrBasa{
             this.sharjvel();
         }
     }
-}
+} 

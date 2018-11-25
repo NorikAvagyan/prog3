@@ -3,15 +3,22 @@ class Xotaker extends MayrBasa{
         super(x,y);
         this.index = 2;
         this.energy = 5;
+        this.speed = 1;
    }
     
    bazmanal() {
         
-        if (this.energy == 10) {
-            //TODO: change coordinates of ne Xotaker
+        if (weather == 0) {
             var norXotaker = new Xotaker(this.x, this.y);
             xotakerArr.push(norXotaker);
             this.energy = 5;
+            console.log("bazmsarac");
+        }
+        else if(weather == 2){
+            var norXotaker = new Xotaker(this.x, this.y);
+            xotakerArr.push(norXotaker);
+            this.energy = 5;
+            console.log("bazmtaqacac");
         }
         
     }
@@ -57,7 +64,7 @@ class Xotaker extends MayrBasa{
         ];
     }
 
-
+  
     utel() {
         this.stanalNorKordinatner();
         var norVandak = random(this.yntrelVandak(1));
@@ -66,7 +73,7 @@ class Xotaker extends MayrBasa{
             for (var i in grassArr) {
                 if (norVandak[0] == grassArr[i].x && norVandak[1] == grassArr[i].y) {
                     grassArr.splice(i, 1);
-                    console.log(grassArr.length)
+                    //console.log(grassArr.length)
                     break;
                 }
 
@@ -83,7 +90,7 @@ class Xotaker extends MayrBasa{
             this.sharjvel();
         }
 
-
+ 
     }
 
 

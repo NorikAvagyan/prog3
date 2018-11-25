@@ -34,41 +34,7 @@ var matrix = [[0, 3, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 1, 0, 3, 0, 0, 3, 0, 0, 0,
 
 ];
 
-// var matrix = [ 
-//     [2,0,0,0,0,0,0,2,0,1],
-//     [2,0,0,0,0,0,0,2,0,1],
-//     [2,0,0,0,0,0,0,2,0,1],
-//     [2,0,0,0,0,0,0,2,0,1],
-//     [2,0,0,0,0,0,0,2,0,1],
-//     [2,0,0,0,0,0,0,2,0,1],
-//     [2,0,0,0,0,0,0,2,0,1],
-//     [2,0,0,0,0,0,0,5,0,1],
-//     [2,0,0,0,0,0,0,4,0,1],
-//     [2,0,0,0,0,0,0,3,0,1]
-// ]
 
-var matrix = [ 
-    [1,1,1,1,1,1,1,1,0,0,0,0,0,0,0,0,0,1,1,1],
-    [1,1,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,1,1,1],
-    [1,1,0,0,0,0,0,1,0,0,0,0,0,0,0,0,2,1,1,1],
-    [1,1,0,0,0,0,1,1,0,0,0,0,0,0,0,0,2,1,1,1],
-    [1,1,0,0,0,0,1,0,0,0,0,0,0,0,0,0,2,1,1,1],
-    [1,1,0,0,0,2,1,0,0,0,0,0,0,5,4,3,2,1,1,1],
-    [1,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0,2,1,1,1],
-    [1,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0,2,1,1,1],
-    [1,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0,2,1,1,1],
-    [1,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0,2,1,1,1],
-    [1,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0,2,1,1,1],
-    [1,1,0,0,0,1,0,0,0,0,0,0,0,5,4,3,2,1,1,1],
-    [1,1,0,0,0,1,1,0,0,0,0,0,0,0,0,0,2,1,1,1],
-    [1,1,0,0,0,0,1,0,0,0,0,0,0,0,0,0,2,1,1,1],
-    [1,1,0,0,0,0,1,0,0,0,0,0,0,0,0,0,2,1,1,1],
-    [1,1,0,0,0,0,1,1,0,0,0,0,0,0,0,0,2,1,1,1],
-    [1,1,0,0,0,0,0,1,0,0,0,0,0,0,0,0,2,1,1,1],
-    [1,1,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,1,1,1],
-    [1,1,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,1,1,1],
-    [1,1,1,1,1,1,1,1,0,0,0,0,0,0,0,0,0,1,1,1]
-]
 
 
 var side = 20;
@@ -77,11 +43,13 @@ var xotakerArr = [];
 var gishatichArr = [];
 var vorsordArr = [];
 var djoxqArr = [];
+var weather = 0;
 
 function setup() {
     frameRate(4);
     createCanvas(matrix[0].length * side, matrix.length * side);
     background('#acacac');
+   
 
     for (var y = 0; y < matrix.length; ++y) {
         for (var x = 0; x < matrix[y].length; ++x) {
@@ -110,7 +78,15 @@ function setup() {
 
 
 }
+setInterval(changecol,3000);
 
+function changecol(){
+    
+    weather++;
+    if(weather == 4){
+        weather = 0;
+    }
+}
 
 function draw() {
 
@@ -118,29 +94,44 @@ function draw() {
         for (var x = 0; x < matrix[y].length; x++) {
 
             if (matrix[y][x] == 1) {
-                fill("green");
-                rect(x * side, y * side, side, side);
+                if(weather == 0){
+                    fill(205, 239, 242);
+                }
+                else if(weather == 1){
+                    fill(191, 244, 66);
+                }
+                else if(weather == 2){
+                    fill(106, 209, 27);
+                }
+                else if(weather == 3){
+                    fill('orange');
+                }
+                else{
+                    fill(205, 239, 242);
+                }
+               
             }
             else if (matrix[y][x] == 0) {
                 fill("#acacac");
-                rect(x * side, y * side, side, side);
+              
             }
             else if (matrix[y][x] == 2) {
                 fill("yellow");
-                rect(x * side, y * side, side, side);
+              
             }
             else if (matrix[y][x] == 3) {
                 fill("red");
-                rect(x * side, y * side, side, side);
+              
             }
             else if (matrix[y][x] == 4) {
                 fill("black");
-                rect(x * side, y * side, side, side);
-            }
+                          }
             else if(matrix[y][x] == 5){
                 fill("blue");
-                rect(x * side, y * side, side, side);
+              
             }
+
+            rect(x * side, y * side, side, side);
         }
     }
 
@@ -149,10 +140,11 @@ function draw() {
     }
 
      for (var i in xotakerArr) {
+         
         xotakerArr[i].utel();
      }
 
-     /*
+     
      for(var i in gishatichArr){
        gishatichArr[i].utel();
      }
@@ -167,11 +159,8 @@ function draw() {
       for(var i in djoxqArr){
          djoxqArr[i].sharjvel();
          djoxqArr[i].utel();
-     }*/
+     }
      
 }
 
 
-function mouseClicked(){
-    noLoop()
-}
